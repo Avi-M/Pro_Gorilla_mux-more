@@ -10,7 +10,7 @@ import (
 	"net/http"
 )
 
-// FoodItem ...
+// Student ...
 type StudentInfo struct {
 	ID     int
 	Name   string
@@ -50,7 +50,7 @@ func GetAllStudents(w http.ResponseWriter, r *http.Request) {
 		fmt.Println(resp.Body)
 	}
 
-	// Fetch All the Food Items
+	// Fetch All the Student
 	response, err := http.Get("http://localhost:8000/api/student")
 	if err != nil {
 		fmt.Printf("Could Not Fetch Foods, Error: %s", err)
@@ -59,7 +59,7 @@ func GetAllStudents(w http.ResponseWriter, r *http.Request) {
 
 	defer response.Body.Close()
 
-	// Store the Fetched Food Items in an Array
+	// Store the Fetched Student in an Array
 	var items []StudentInfo
 	_ = json.NewDecoder(response.Body).Decode(&items)
 
@@ -75,7 +75,7 @@ func updateStudentInfo(w http.ResponseWriter, r *http.Request) {
 
 	fmt.Println("Endpoint hit: Updating Food Item")
 
-	// Retrieve Food Item ID
+	// Retrieve Student ID
 	id := r.FormValue("id")
 
 	// New Values
