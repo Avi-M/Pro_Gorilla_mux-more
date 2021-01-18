@@ -18,7 +18,7 @@ var err error
 
 // Model ...
 
-// Food Model
+//Student Model
 type Student struct {
 	ID     uint   `gorm:"primary_key"`
 	Name   string `json:"name"`
@@ -26,7 +26,7 @@ type Student struct {
 	Branch  string `json:"branch"`
 }
 
-// Initialize Database with Food Table
+// Initialize Database with Student Table
 func initialMigration() {
     dsn := "host=localhost user=postgres password=password dbname=stinfo port=5432 sslmode=disable"
 	// Check For Connection
@@ -51,7 +51,7 @@ func getStudents(w http.ResponseWriter, r *http.Request) {
 	db, err = gorm.Open("postgres" ,dsn)
 	if err != nil {
 		fmt.Println(err.Error())
-		panic("Failed To Retrieve Foods, Database Connection Failed")
+		panic("Failed To Retrieve Students, Database Connection Failed")
 	}
 	defer db.Close()
 
@@ -74,7 +74,7 @@ func getStudent(w http.ResponseWriter, r *http.Request) {
 	db, err = gorm.Open("postgres" ,dsn)
 	if err != nil {
 		fmt.Println(err.Error())
-		panic("Failed To Retrieve Food, Database Connection Failed")
+		panic("Failed To Retrieve Student, Database Connection Failed")
 	}
 	defer db.Close()
 
